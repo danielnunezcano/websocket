@@ -19,8 +19,9 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content+JSON.parse(greeting.body).edad);
+            showGreeting(JSON.parse(greeting.body).content);
         });
+        init();
     });
 }
 
@@ -34,6 +35,10 @@ function disconnect() {
 
 function sendHello() {
     stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#nameHello").val()}));
+}
+
+function init() {
+    stompClient.send("/app/init", {}, null);
 }
 
 function sendBye() {
