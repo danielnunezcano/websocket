@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class Greeting {
 
-  private String content;
+  private List<HelloMessage> content;
 
 }

@@ -34,7 +34,7 @@ function disconnect() {
 }
 
 function sendHello() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#nameHello").val()}));
+    stompClient.send("/app/hello", {}, JSON.stringify({'userId': $("#userId").val(),'vacant': $("#vacant").val()}));
 }
 
 function init() {
@@ -46,7 +46,9 @@ function sendBye() {
 }
 
 function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    const result = message.map(obj => `${obj.userId}:${obj.vacant}`)
+        .join(';');
+    $("#greetings").html("<tr><td>" + result + "</td></tr>");
 }
 
 $(function () {

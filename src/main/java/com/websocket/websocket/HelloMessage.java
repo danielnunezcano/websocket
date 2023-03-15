@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HelloMessage {
 
-  private String name;
+  private Integer userId;
+
+  private Integer vacant;
 
 }
